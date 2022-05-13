@@ -58,6 +58,15 @@ jobs:
       - name: Install Composer dependencies
         run: php composer.phar install --prefer-dist --no-interaction
 
+      - name: Restore PHPStan cache
+        uses: actions/cache@v2
+        with:
+          
+          path: ${{ env.TMP }}/phpstan/cache
+          key: "phpstan-cache-${{ matrix.php }}-${{ hashFiles('./composer.lock') }}"
+          restore-keys: |
+            phpstan-cache-
+
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyze --debug --no-progress --memory-limit=2G
 
