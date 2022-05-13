@@ -62,7 +62,7 @@ jobs:
         uses: actions/cache@v2
         with:
           
-          path: /${{ env.TMPDIR }}/phpstan/cache
+          path: /tmp/phpstan/cache
           key: "phpstan-cache-${{ matrix.php }}-${{ hashFiles('./composer.lock') }}"
           restore-keys: |
             phpstan-cache-
