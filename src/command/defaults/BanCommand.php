@@ -59,7 +59,7 @@ class BanCommand extends VanillaCommand{
 		$sender->getServer()->getNameBans()->addBan($name, $reason, null, $sender->getName());
 
 		if(($player = $sender->getServer()->getPlayerExact($name)) instanceof Player){
-			$player->kick($reason !== "" ? "Banned by admin. Reason: " . $reason : "Banned by admin.");
+			$player->kick($reason !== "" ? "§cYou have been banned! \n§rReason: " . $reason : "§cYou have been banned!");
 		}
 
 		Command::broadcastCommandMessage($sender, KnownTranslationFactory::commands_ban_success($player !== null ? $player->getName() : $name));
